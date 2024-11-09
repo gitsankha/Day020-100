@@ -1,21 +1,30 @@
 import turtle
+from snake import Snake
+import time
+
+
 
 screen = turtle.Screen()
 screen.setup(height=600,width=600)
-screen.title("My Sanke Xanzia")
+screen.title("My Snake Xenzia")
 screen.bgcolor("black")
+screen.tracer(0,0)
 
-# color = ['white', 'red', 'green']
-all_turtles = []
-turtle_pos = [(0,0),(-20,0),(-40,0)]
+is_game_on = True
 
-for i in range(0,3):
-    new_turtle = turtle.Turtle()
-    new_turtle.shape("square")
-    new_turtle.color("white")
-    new_turtle.setpos(turtle_pos[i])
+snake = Snake()
+screen.listen()
 
+"""START HERE """
+screen.onkey(snake.up, "Up")
+screen.onkey(snake.down, "Down")
+screen.onkey(snake.right, "Right")
+screen.onkey(snake.left, "Left")
 
+while is_game_on:
+    screen.update()
+    time.sleep(0.1)
+    snake.move()
 
 
 
